@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocCare | Modern Appointment System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="glass-nav">
+        <div class="logo">Doc<span>Care</span></div>
+        <div class="nav-links">
+            <div class="nav-menu">
+                <button onclick="showPage('home')">Home</button>
+                <button onclick="showPage('search')">Find Doctors</button>
+                <button onclick="showPage('my-bookings')" id="nav-bookings" style="display:none">My Bookings</button>
+            </div>
+            <div class="nav-auth">
+                <button class="btn-primary" id="btn-auth" onclick="showPage('auth')">Login / Sign Up</button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="app">
+        <!-- Hero Section -->
+        <section id="page-home" class="page active">
+            <div class="hero">
+                <h1>Healthcare that <span>clicks</span>.</h1>
+                <p>Book the best doctors instantly with our premium appointment system.</p>
+                <div class="hero-actions">
+                    <button class="btn-large" onclick="showPage('search')">Find a Specialist</button>
+                    <button class="btn-outline" onclick="showPage('auth')">Register for Free</button>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><h3>100+</h3><p>Specialists</p></div>
+                <div class="stat-card"><h3>24/7</h3><p>Support</p></div>
+                <div class="stat-card"><h3>99%</h3><p>Satisfaction</p></div>
+            </div>
+        </section>
+
+        <!-- Auth Section (Register/Login) -->
+        <section id="page-auth" class="page">
+            <div class="auth-card glass">
+                <div class="auth-tabs">
+                    <button class="tab active" onclick="setAuthTab('login')">Login</button>
+                    <button class="tab" onclick="setAuthTab('register')">Register</button>
+                </div>
+                <div id="auth-forms">
+                    <!-- Dynamic forms will be here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Search & Doctors List -->
+        <section id="page-search" class="page">
+            <div class="search-section">
+                <h2>Our Specialists</h2>
+                <div class="search-bar">
+                    <input type="text" id="specialty-input" placeholder="Search by Specialty (e.g. Cardiology, Surgery)...">
+                    <button class="btn-primary" onclick="searchDoctors()">Search</button>
+                </div>
+                <div id="doctor-list" class="doctor-grid">
+                    <!-- Doctors appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Bookings Section -->
+        <section id="page-my-bookings" class="page">
+            <h2>Your Appointments</h2>
+            <div id="booking-list" class="booking-grid">
+                <!-- Bookings appear here -->
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-container" class="glass-modal" style="display:none">
+        <div class="modal-content glass">
+            <h2 id="modal-title">Book Appointment</h2>
+            <div id="modal-body"></div>
+            <div class="modal-actions">
+                <button class="btn-outline" onclick="closeModal()">Cancel</button>
+                <button class="btn-primary" id="modal-submit">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
